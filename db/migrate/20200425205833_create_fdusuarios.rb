@@ -1,0 +1,22 @@
+class CreateFdusuarios < ActiveRecord::Migration[6.0]
+  def change
+    create_table :fdusuarios, id: false do |t|
+      t.string :id_email, limit: 100, :null => false
+      t.string :num_identificacion, limit: 45
+      t.string :primer_nombre, limit: 45
+      t.string :segundo_nombre, limit: 45
+      t.string :primer_apellido, limit: 45
+      t.string :segundo_apellido, limit: 45
+      t.string :departamento, limit: 45
+      t.string :ciudad, limit: 45
+      t.string :celular, limit: 45
+      t.string :telefono, limit: 45
+      t.string :ruta_docs, limit: 100
+      t.boolean :tipo_empleado
+      
+
+      t.timestamps
+    end
+    execute "ALTER TABLE fdusuarios ADD PRIMARY KEY (id_email);"
+  end
+end
