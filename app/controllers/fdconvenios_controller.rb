@@ -1,0 +1,2 @@
+class FdconveniosController < ApplicationController
+end

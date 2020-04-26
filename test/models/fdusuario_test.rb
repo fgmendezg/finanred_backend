@@ -2,7 +2,8 @@
 #
 # Table name: fdusuarios
 #
-#  id_email           :string(100)      not null, primary key
+#  id                 :bigint           not null, primary key
+#  email              :string(100)      not null
 #  num_identificacion :string(45)
 #  primer_nombre      :string(45)
 #  segundo_nombre     :string(45)
@@ -16,6 +17,9 @@
 #  tipo_empleado      :boolean
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
+#  fdtipodocumento_id :bigint
+#  fdconvenio_id      :bigint
+#  fdsector_id        :bigint
 #
 require 'test_helper'
 

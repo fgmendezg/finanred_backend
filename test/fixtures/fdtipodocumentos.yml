@@ -1,0 +1,17 @@
+# == Schema Information
+#
+# Table name: fdtipodocumentos
+#
+#  id             :bigint           not null, primary key
+#  name_documento :string(50)
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
+one:
+  name_documento: MyString
+  id_tipodocumento: 1
+
+two:
+  name_documento: MyString
+  id_tipodocumento: 1

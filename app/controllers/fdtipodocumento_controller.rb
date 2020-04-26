@@ -1,0 +1,2 @@
+class FdtipodocumentosController < ApplicationController
+end

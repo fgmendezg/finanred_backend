@@ -2,7 +2,8 @@
 #
 # Table name: fdusuarios
 #
-#  id_email           :string(100)      not null, primary key
+#  id                 :bigint           not null, primary key
+#  email              :string(100)      not null
 #  num_identificacion :string(45)
 #  primer_nombre      :string(45)
 #  segundo_nombre     :string(45)
@@ -16,6 +17,9 @@
 #  tipo_empleado      :boolean
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
+#  fdtipodocumento_id :bigint
+#  fdconvenio_id      :bigint
+#  fdsector_id        :bigint
 #
 class Fdusuario < ApplicationRecord
     validates :id_email, presence: true
@@ -24,4 +28,8 @@ class Fdusuario < ApplicationRecord
     validates :num_identificacion, :primer_nombre, :segundo_nombre, :primer_apellido, :segundo_apellido, :departamento, :ciudad, :celular, :telefono, length: { maximum:45, too_long: "Se permiten máximo %´{count} caracteres" }
 
     has_many :fdnamedocs
+    belongs_to :fdtipodocumento
+    belongs_to :fdsector
+    belongs_to :fdconvenio
+    has_and_belongs_to_many :fdadministradors
 end

@@ -1,0 +1,2 @@
+class FdtipoadminusersController < ApplicationController
+end

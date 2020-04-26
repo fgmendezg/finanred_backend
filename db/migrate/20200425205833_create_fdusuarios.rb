@@ -1,7 +1,7 @@
 class CreateFdusuarios < ActiveRecord::Migration[6.0]
   def change
-    create_table :fdusuarios, id: false do |t|
-      t.string :id_email, limit: 100, :null => false
+    create_table :fdusuarios do |t|
+      t.string :email, limit: 100, :null => false
       t.string :num_identificacion, limit: 45
       t.string :primer_nombre, limit: 45
       t.string :segundo_nombre, limit: 45
@@ -17,6 +17,6 @@ class CreateFdusuarios < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
-    execute "ALTER TABLE fdusuarios ADD PRIMARY KEY (id_email);"
+    #execute "ALTER TABLE fdusuarios ADD PRIMARY KEY (id_email);"
   end
 end

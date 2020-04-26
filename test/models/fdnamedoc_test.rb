@@ -2,11 +2,11 @@
 #
 # Table name: fdnamedocs
 #
-#  namedoc    :string(45)       not null
-#  id_namedoc :integer          not null, primary key
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  id_email   :string(100)
+#  id           :bigint           not null, primary key
+#  namedoc      :string(45)       not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  fdusuario_id :bigint           not null
 #
 require 'test_helper'
 

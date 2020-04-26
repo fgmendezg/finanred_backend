@@ -1,0 +1,15 @@
+# == Schema Information
+#
+# Table name: fdadministradors
+#
+#  id         :bigint           not null, primary key
+#  name_user  :string(45)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  name_user: MyString
+
+two:
+  name_user: MyString
