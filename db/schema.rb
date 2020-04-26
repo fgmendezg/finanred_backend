@@ -20,13 +20,13 @@ ActiveRecord::Schema.define(version: 2020_04_26_010025) do
   end
 
   create_table "fdadministradors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name_user", limit: 45
+    t.string "name_user", limit: 45, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "fdconvenios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name_convenio", limit: 45
+    t.string "name_convenio", limit: 45, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -47,19 +47,19 @@ ActiveRecord::Schema.define(version: 2020_04_26_010025) do
   end
 
   create_table "fdsectors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name_sector", limit: 45
+    t.string "name_sector", limit: 45, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "fdtipoadminusers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "tipoadminuser", limit: 45
+    t.string "tipoadminuser", limit: 45, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "fdtipodocumentos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name_documento", limit: 50
+    t.string "name_documento", limit: 50, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

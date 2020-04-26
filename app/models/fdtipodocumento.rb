@@ -8,6 +8,7 @@
 #  updated_at     :datetime         not null
 #
 class Fdtipodocumento < ApplicationRecord
+    validates :name_documento, presence: true, uniqueness: true
     validates :name_documento, length: { maximum:50, too_long: "El tipo de documento es demaciado largo" }
 
     has_many :fdusuarios

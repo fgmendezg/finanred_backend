@@ -8,6 +8,9 @@
 #  updated_at  :datetime         not null
 #
 class Fdsector < ApplicationRecord
+    validates :name_sector, presence: true, uniqueness: true
+    validates :name_sector, length: { maximum:45, too_long: "El nombre del sector es demaciado largo" }
+
     has_and_belongs_to_many :fdconvenios
     has_many :fdusuarios
 end
