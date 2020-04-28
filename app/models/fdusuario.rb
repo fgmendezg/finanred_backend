@@ -22,15 +22,18 @@
 #  fdsector_id        :bigint
 #
 class Fdusuario < ApplicationRecord
-    validates :id_email, presence: true
-    validates :id_email, :num_identificacion, uniqueness: true
-    validates :id_email, length: { maximum:100, too_long: "El email es demaciado largo" }
+    validates :email, presence: true
+    # No es sensible a las mayusculas
+    validates :email, uniqueness: { case_sensitive: false }
+    # No permite repetodps a menos que sea nulos
+    validates :num_identificacion, uniqueness: true, unless: Proc.new { |b| b.num_identificacion.blank? }
+    validates :email, length: { maximum:100, too_long: "El email es demaciado largo" }
     validates :ruta_docs, length: { maximum:100, too_long: "La ruta es demaciado larga" }
     validates :num_identificacion, :primer_nombre, :segundo_nombre, :primer_apellido, :segundo_apellido, :departamento, :ciudad, :celular, :telefono, length: { maximum:45, too_long: "Se permiten máximo %´{count} caracteres" }
 
     has_many :fdnamedocs
-    belongs_to :fdtipodocumento
-    belongs_to :fdsector
-    belongs_to :fdconvenio
+    belongs_to :fdtipodocumento, optional: true
+    belongs_to :fdsector, optional: true
+    belongs_to :fdconvenio, optional: true
     has_and_belongs_to_many :fdadministradors
 end
