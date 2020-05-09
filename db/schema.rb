@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_26_010025) do
+ActiveRecord::Schema.define(version: 2020_05_09_155508) do
 
   create_table "fdadministradorhasfdtipoadminuser", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "fdtipoadminuser_id"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 2020_04_26_010025) do
     t.bigint "fdtipodocumento_id"
     t.bigint "fdconvenio_id"
     t.bigint "fdsector_id"
+    t.string "password_digest", limit: 100
     t.index ["fdconvenio_id"], name: "index_fdusuarios_on_fdconvenio_id"
     t.index ["fdsector_id"], name: "index_fdusuarios_on_fdsector_id"
     t.index ["fdtipodocumento_id"], name: "index_fdusuarios_on_fdtipodocumento_id"

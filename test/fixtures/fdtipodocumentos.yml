@@ -3,7 +3,7 @@
 # Table name: fdtipodocumentos
 #
 #  id             :bigint           not null, primary key
-#  name_documento :string(50)
+#  name_documento :string(50)       not null
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #

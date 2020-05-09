@@ -5,6 +5,23 @@ class FdusuariosController < ApplicationController
         render json: @usuarios, include: []
     end
 
+    def create
+        @usuario = Fdusuario.new(user_params_standard)
+        if @usuario.save
+            render json: @usuario, status:201
+        else
+            # TODO: Capturar error, si ya existe el usuario, etc
+            # y enviarlo al front de forma controlada
+            render json: @usuario.errors, status: :unprocessable_entity
+        end
+    end
+
+    # Para crear usuario de forma standard con contraseña
+    # TODO: Agregar la contraseña
+    def user_params_standard
+        params.permit( :email, :primer_nombre, :segundo_nombre, :primer_apellido, :segundo_apellido, :password )
+    end
+
     # POST
     # Login desde terceros como google o facebook
     # Verifica si el email recibido esta registrado, si no lo esta lo 
@@ -35,7 +52,7 @@ class FdusuariosController < ApplicationController
     end
 
 
-    # Parametros para crear usuarios
+    # Parametros para crear usuarios federado
     def user_params
         params.permit( :email, :primer_nombre, :segundo_nombre, :primer_apellido, :segundo_apellido )
     end

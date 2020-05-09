@@ -3,7 +3,7 @@
 # Table name: fdtipoadminusers
 #
 #  id            :bigint           not null, primary key
-#  tipoadminuser :string(45)
+#  tipoadminuser :string(45)       not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #

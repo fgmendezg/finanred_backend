@@ -3,7 +3,7 @@
 # Table name: fdadministradors
 #
 #  id         :bigint           not null, primary key
-#  name_user  :string(45)
+#  name_user  :string(45)       not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

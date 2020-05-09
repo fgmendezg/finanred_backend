@@ -20,6 +20,7 @@
 #  fdtipodocumento_id :bigint
 #  fdconvenio_id      :bigint
 #  fdsector_id        :bigint
+#  password_digest    :string(50)
 #
 
 one:
