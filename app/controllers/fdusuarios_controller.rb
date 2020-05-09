@@ -1,4 +1,6 @@
 class FdusuariosController < ApplicationController
+    before_action :authenticate_fdusuario, only: [ :index ]
+
      # GET 
      def index
         @usuarios = Fdusuario.all

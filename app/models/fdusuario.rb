@@ -33,7 +33,7 @@ class Fdusuario < ApplicationRecord
     validates :email, length: { maximum:100, too_long: "El email es demaciado largo" }
     validates :ruta_docs, length: { maximum:100, too_long: "La ruta es demaciado larga" }
     validates :num_identificacion, :primer_nombre, :segundo_nombre, :primer_apellido, :segundo_apellido, :departamento, :ciudad, :celular, :telefono, length: { maximum:45, too_long: "Se permiten máximo %´{count} caracteres" }
-    validates :password, length: { maximum: 50, too_long:"Pueden haber unicamente %{count} caracteres en la contraseña." }
+    validates :password, length: { maximum: 50, minimum: 6, too_long:"Pueden haber unicamente %{count} caracteres en la contraseña." }, allow_nil: false, allow_blank: false
 
     has_many :fdnamedocs
     belongs_to :fdtipodocumento, optional: true
