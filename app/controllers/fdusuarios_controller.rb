@@ -1,12 +1,13 @@
 class FdusuariosController < ApplicationController
     before_action :authenticate_fdusuario, only: [ :index ]
 
-     # GET 
-     def index
+    # GET 
+    def index
         @usuarios = Fdusuario.all
         render json: @usuarios, include: []
     end
 
+    # POST
     def create
         @usuario = Fdusuario.new(user_params_standard)
         if @usuario.save
