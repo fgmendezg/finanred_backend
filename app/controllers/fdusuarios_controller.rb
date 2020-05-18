@@ -1,10 +1,22 @@
 class FdusuariosController < ApplicationController
-    before_action :authenticate_fdusuario, only: [ :index ]
+    before_action :authenticate_fdusuario, only: [ :index, :getCurrentUser ]
 
     # GET 
     def index
         @usuarios = Fdusuario.all
         render json: @usuarios, include: []
+    end
+
+    # GET
+    # Retorna los datos del usuario actualmente autenticado.
+    def getDateCurrentUser
+        if current_fdusuario == nil
+            puts "Se intento obtener un usuario con un token vencido"
+            render json: "Token vencido", include: []
+        else
+            puts "Obteniendo Usuario: "
+            render json: current_fdusuario, include: []
+        end
     end
 
     # POST

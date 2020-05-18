@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :fdnamedocs, only: [:index]
   resources :fdusuarios, only: [:index, :create]
   post '/fdusuarios/loginMediator/', to: 'fdusuarios#loginMediator'
+  get '/fdusuarios/getDateCurrentUser/', to: 'fdusuarios#getDateCurrentUser'
 end
