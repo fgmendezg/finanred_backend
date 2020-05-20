@@ -47,3 +47,6 @@ end
 gem 'annotate'
 
 gem 'mysql2'
+
+# Para la cargar de documentos
+gem 'carrierwave', '~> 2.0'

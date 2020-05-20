@@ -12,5 +12,8 @@ class Fdnamedoc < ApplicationRecord
     validates :namedoc, :id_email, presence: true
     validates :namedoc, length: { maximum:45, too_long: "El nombre del archivo es demaciado largo" }
 
+    #carrier
+    mount_uploader :namedoc, AvatarUploader
+
     belongs_to :fdusuario
 end

@@ -40,4 +40,12 @@ class Fdusuario < ApplicationRecord
     belongs_to :fdsector, optional: true
     belongs_to :fdconvenio, optional: true
     has_and_belongs_to_many :fdadministradors
+
+
+    def self.crearRutaDoc( index )
+        name = "/user" + index.to_s + "/"
+        user = Fdusuario.find_by id: index
+        user.update(ruta_docs: name)
+        return name
+    end
 end
