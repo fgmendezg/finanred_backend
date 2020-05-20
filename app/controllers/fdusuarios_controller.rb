@@ -67,9 +67,32 @@ class FdusuariosController < ApplicationController
     end
 
 
+    # Cambia los datos de usuario actual:
+    # Numero de cedula, departamento, ciudad de residencia, celular y telefono
+    # PATCH
+    def changeUser
+        @usuario = Fdusuario.find(params[:id])
+        if @usuario.update_attributes(user_update_params)
+            render json: @usuario, include: []
+        else
+            render json: @usuario.errors
+        end
+        #if current_fdusuario.update(user_update_params)
+        #    render json: current_fdusuario, include: []
+        #else
+        #    render json: current_fdusuario.errors
+        #end
+    end
+
+
     # Parametros para crear usuarios federado
     def user_params
         params.permit( :email, :primer_nombre, :segundo_nombre, :primer_apellido, :segundo_apellido )
+    end
+
+    # datos necesarios para update
+    def user_update_params
+        params.permit( :num_identificacion, :departamento, :ciudad, :celular, :telefono )
     end
 
 end
