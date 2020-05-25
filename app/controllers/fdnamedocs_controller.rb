@@ -1,16 +1,28 @@
 class FdnamedocsController < ApplicationController
-    before_action :authenticate_fdusuario, only: [ :index, :create ]
+    before_action :authenticate_fdusuario, only: [ :index, :createIntelligent, :destroy ]
 
     # GET
     def index
         @namedocs = Fdnamedoc.all
         render json: @namedocs, include: []
     end
+
+    #POST
+    def createIntelligent
+        # Verificar si no existe ya el archivo, si existe se actualiza en vez de crearlo
+        @doc = Fdnamedoc.find_by(fdusuario_id: current_fdusuario.id, name: params[:name])
+        if (@doc == nil)
+            # Es nulo asi que se crea un nuevo doc
+            create
+        else
+            # Se actualiza
+            update
+        end
+    end
     
     # POST
     def create
-        #TODO: Crear rutas repetidas apuntando al mismo archivo, esto no deberia pasar es decir 
-        #se puede ejecutar el mismo create varia veces, si se usa uniqueness en :namedoc no sube correctamente el archivo
+
         puts "CREANDO FDNAMEDOC:"
         rute = "";
         # Verificar usuario
@@ -42,4 +54,37 @@ class FdnamedocsController < ApplicationController
         end
     end
 
+    #PATCH
+    # Actualiza el archivo
+    def update
+        @doc = Fdnamedoc.find_by(fdusuario_id: current_fdusuario.id, name: params[:name])
+        if @doc.update_attributes(doc_update_params)
+            render json: @doc, include: []
+        else
+            render json: @doc.errors
+        end
+    end
+
+    # datos necesarios para update
+    def doc_update_params
+        params.permit( :namedoc )
+    end
+
+    #DELETE
+    def destroy
+        @doc = Fdnamedoc.find_by(fdusuario_id: current_fdusuario.id, name: params[:name])
+        if(@doc == nil)
+            # El doc no exite
+            render json: "El documento que quiere eliminar no existe", status: :not_found 
+        else
+            # Eliminar archivo
+            if @doc.destroy
+                render json: @doc, include: []
+            else
+                render json: @doc.errors
+            end
+        end
+    end
+
+    private :create, :update, :doc_update_params
 end
