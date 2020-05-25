@@ -32,7 +32,9 @@ ActiveRecord::Schema.define(version: 2020_05_09_155508) do
   end
 
   create_table "fdnamedocs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "namedoc", limit: 45, null: false
+    t.string "namedoc", limit: 500, null: false
+    t.string "rute", limit: 45, null: false
+    t.string "name", limit: 45, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "fdusuario_id", null: false

@@ -20,7 +20,7 @@
 #  fdtipodocumento_id :bigint
 #  fdconvenio_id      :bigint
 #  fdsector_id        :bigint
-#  password_digest    :string(50)
+#  password_digest    :string(100)
 #
 class Fdusuario < ApplicationRecord
     has_secure_password
@@ -32,7 +32,7 @@ class Fdusuario < ApplicationRecord
     validates :num_identificacion, uniqueness: true, unless: Proc.new { |b| b.num_identificacion.blank? }
     validates :email, length: { maximum:100, too_long: "El email es demaciado largo" }
     validates :ruta_docs, length: { maximum:100, too_long: "La ruta es demaciado larga" }
-    validates :num_identificacion, :primer_nombre, :segundo_nombre, :primer_apellido, :segundo_apellido, :departamento, :ciudad, :celular, :telefono, length: { maximum:45, too_long: "Se permiten máximo %´{count} caracteres" }
+    validates :num_identificacion, :primer_nombre, :segundo_nombre, :primer_apellido, :segundo_apellido, :departamento, :ciudad, :celular, :telefono, length: { maximum:45, too_long: "Se permiten máximo %{count} caracteres" }
     #validates :password, length: { maximum: 50, minimum: 6, too_long:"Pueden haber unicamente %{count} caracteres en la contraseña." }, allow_nil: false, allow_blank: false
 
     has_many :fdnamedocs
@@ -43,9 +43,13 @@ class Fdusuario < ApplicationRecord
 
 
     def self.crearRutaDoc( index )
-        name = "/user" + index.to_s + "/"
+        name = "user" + index.to_s
         user = Fdusuario.find_by id: index
         user.update(ruta_docs: name)
         return name
+    end
+
+    def self.getRutaDoc( index )
+        return select( :ruta_docs ).where( id: index ).first.ruta_docs
     end
 end

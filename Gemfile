@@ -50,3 +50,6 @@ gem 'mysql2'
 
 # Para la cargar de documentos
 gem 'carrierwave', '~> 2.0'
+
+# Para Manejar resursos de AWS
+gem 'fog-aws'
