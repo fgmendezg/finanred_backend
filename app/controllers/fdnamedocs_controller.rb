@@ -1,5 +1,5 @@
 class FdnamedocsController < ApplicationController
-    before_action :authenticate_fdusuario, only: [ :index, :createIntelligent, :destroy ]
+    before_action :authenticate_fdusuario, only: [ :index, :createIntelligent, :destroy, :isExist ]
 
     # GET
     def index
@@ -83,6 +83,17 @@ class FdnamedocsController < ApplicationController
             else
                 render json: @doc.errors
             end
+        end
+    end
+
+    # GET
+    # Permite saber si exite o no un archivo del usuario, buscandolo con el nombre
+    def isExist
+        @doc = Fdnamedoc.find_by(fdusuario_id: current_fdusuario.id, name: params[:name])
+        if(@doc == nil)
+            render json: false
+        else
+            render json: true
         end
     end
 

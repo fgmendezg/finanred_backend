@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :fdnamedocs, only: [:index]
   delete '/fdnamedocs/deletedocs/', to: 'fdnamedocs#destroy'
   post '/fdnamedocs/updatedocsci/', to: 'fdnamedocs#createIntelligent'
+  get '/fdnamedocs/isexist/', to: 'fdnamedocs#isExist'
   
   resources :fdusuarios, only: [:index, :create]
   post '/fdusuarios/loginMediator/', to: 'fdusuarios#loginMediator'
