@@ -1,2 +1,0 @@
-class FdsectorsController < ApplicationController
-end

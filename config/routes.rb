@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   post '/fdusuarios/loginMediator/', to: 'fdusuarios#loginMediator'
   get '/fdusuarios/getDateCurrentUser/', to: 'fdusuarios#getDateCurrentUser'
   patch '/fdusuarios/updateuser/:id', to: 'fdusuarios#changeUser'
+
+  resources :fdsectors, only: [:index]
 end
